@@ -1,0 +1,14 @@
+
+//from https://github.com/chocolatey/choco/issues/113 ||\\__/:ThrowMe?
+Security concerns and how they have been addressed
+
+Installs without prompting for confirmation - not true as of 0.9.9. Chocolatey by default will stop and ask you to confirm before changing state of the system, showing you the script it wants to execute.
+Anybody can put packages up on the community feed and they could be malicious - we put package moderation in place in October 2014. All packages coming in are now moderated BEFORE they are open to the public. See http://codebetter.com/robreynolds/2014/10/27/chocolatey-now-has-package-moderation/ for more details.
+
+From https://help.github.com/articles/github-security/
+
+Security Scenarios to Keep in Mind / Avoid
+
+Administrative user choose to install Chocolatey to an insecure location (like the root of the system drive, e.g. C:\Chocolatey). Now anyone that has access to that computer has an attack vector. This is very bad, DO NOT DO THIS. It still requires an administrative execution context to exploit, but it has a high possibility and high impact.
+Non-admin user choose to install Chocolatey to an insecure location (like the root of the system drive, e.g. C:\Chocolatey). Now anyone that has access to that computer has an attack vector for that user alone. This has a medium possibility and low impact.
+Installing user is admin during install, but then the admin privileges are removed. That user can still install portable packages that will end up on PATH. This can lead to escalation of privilege attacks. This is an unlikely scenario but one to consider if you reduce privileges for users in your organization. This has a low possibility but a high impact.
